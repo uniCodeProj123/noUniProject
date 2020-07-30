@@ -1,3 +1,0 @@
-<% if (locals.errorWarningMessage != null) { %>
-  <%= errorWarningMessage %>
-<% } %>
