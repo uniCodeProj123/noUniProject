@@ -1,4 +1,8 @@
 <h2 class="page-header">Search Book</h2>
+
+<table style="width:100%">
+  <tr>
+
 <form action="/books" method="GET">
   <div class="form-row">
     <div class="form-item">
@@ -16,9 +20,13 @@
       <input type="date" name="publishedBefore" value="<%= searchOptions.publishedBefore %>">
     </div>
   </div>
-  <div class="form-row form-row-end">
     <button class="btn btn-primary" type="submit">Search</button>
-  </div>
 </form>
+<form action="/books/clear" method="GET">
+    <button class="btn btn-danger clear-button" type="submit" style="margin:10px" name="clear">Clear</button>
+</form>
+</tr>
+</table>
+
 <br>
 <%- include('../partials/bookGrid', { books: books, large: true }) %>

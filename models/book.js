@@ -29,6 +29,18 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  bookPrice: {
+    type: Number,
+    required: true
+  },
+  stock: {
+    type: Number,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true
+  },
   author: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,

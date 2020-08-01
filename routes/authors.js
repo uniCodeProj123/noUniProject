@@ -20,6 +20,11 @@ router.get('/', async (req, res) => {
   }
 })
 
+// Clear Author Filter criteria
+router.get('/clear', async (req, res) => {
+    res.redirect('/authors')
+})
+
 // New Author Route
 router.get('/new', (req, res) => {
   res.render('authors/new', { author: new Author() })
