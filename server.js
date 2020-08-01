@@ -13,6 +13,8 @@ const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
 const bookRouter = require('./routes/books')
 const userRouter = require('./routes/users')
+const customerRouter = require('./routes/customers')
+
 
 
 app.set('view engine', 'ejs')
@@ -29,9 +31,33 @@ const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))
 
+// app.post('./routes/users/login', function (req, res) {
+//    db.User.findOne({
+//         where: {
+//             email: req.body.email
+//                }
+//    }).then(function (user) {
+//        if (!user) {
+//           res.redirect('/');
+//        } else {
+// bcrypt.compare(req.body.password, user.password, function (err, result) {
+//       if (result == true) {
+//           res.redirect('/users');
+//       } else {
+//        res.send('Incorrect password');
+//        res.redirect('/');
+//       }
+//     });
+//    }
+// });
+// });
+
+
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)
 app.use('/books', bookRouter)
 app.use('/users', userRouter)
+app.use('/customers', customerRouter)
+
 
 app.listen(process.env.PORT || 3000)
