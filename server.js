@@ -44,7 +44,6 @@ app.use('/users', userRouter)
 app.use('/customers', customerRouter)
 
 
-
 app.use('/', express.static(__dirname + '/public'));
 
     app.use(session({
@@ -151,7 +150,7 @@ app.use('/', express.static(__dirname + '/public'));
 
     app.post('/customers/login',
         customerAuth.authenticate('/customers/login', {
-            successRedirect: '/customers',
+            successRedirect: '/',
             failureRedirect: '/customers/login',
             failureFlash: true
         })
