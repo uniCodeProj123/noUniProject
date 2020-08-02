@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
+const bcrypt = require("bcrypt")
 
 // All Users Route
 router.get('/', async (req, res) => {
@@ -20,7 +21,7 @@ router.get('/new', (req, res) => {
 // Create User Route
 router.post('/', async (req, res) => {
   const user = new User({
-    name: req.body.name,
+    username: req.body.username,
     email: req.body.email,
     password: req.body.password
 
@@ -35,38 +36,11 @@ router.post('/', async (req, res) => {
 })
 
 // Attempt sign in Route
-// router.post('/login', async (req, res) => {
-//
-//   res.redirect(`/users`)
-//
-// })
-//
-// const mongoose = require('mongoose')
-// mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true,  useUnifiedTopology: true })
-// const db = mongoose.connection
+router.post('/login', async (req, res) => {
 
+  res.redirect(`/customers`)
 
-//login page: storing and comparing email and password,and redirecting to home page after login
-
-
-
-  router.post('/login', function (req, res) {
-     User.findOne({ where: { email: req.body.email }
-     }).then(function (err, user) {
-         if (!user) {
-            res.redirect('/customers');
-         } else {
-bcrypt.compare(req.body.password, user.password, function (err, result) {
-        if (result == true) {
-            res.redirect('/users');
-        } else {
-         res.send('Incorrect password');
-         res.redirect('/');
-        }
-      });
-     }
-  });
-});
+})
 
 
 

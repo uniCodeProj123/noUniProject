@@ -26,12 +26,12 @@ router.get('/clear', async (req, res) => {
 })
 
 // New Author Route
-router.get('/new', (req, res) => {
+router.get('/new',checkAuthenticated, (req, res) => {
   res.render('authors/new', { author: new Author() })
 })
 
 // Create Author Route
-router.post('/', async (req, res) => {
+router.post('/',checkAuthenticated, async (req, res) => {
   const author = new Author({
     name: req.body.name
   })
@@ -59,7 +59,8 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.get('/:id/edit', async (req, res) => {
+//edit author
+router.get('/:id/edit', checkAuthenticated, async (req, res) => {
   try {
     const author = await Author.findById(req.params.id)
     res.render('authors/edit', { author: author })
@@ -68,7 +69,8 @@ router.get('/:id/edit', async (req, res) => {
   }
 })
 
-router.put('/:id', async (req, res) => {
+//update author
+router.put('/:id',checkAuthenticated, async (req, res) => {
   let author
   try {
     author = await Author.findById(req.params.id)
@@ -87,7 +89,8 @@ router.put('/:id', async (req, res) => {
   }
 })
 
-router.delete('/:id', async (req, res) => {
+//delete author
+router.delete('/:id',checkAuthenticated, async (req, res) => {
   let author
   try {
     author = await Author.findById(req.params.id)
@@ -101,5 +104,20 @@ router.delete('/:id', async (req, res) => {
     }
   }
 })
+
+function checkAuthenticated(req, res, next) {
+if (!authenticateUser) {
+ return next()
+}
+res.redirect('/login')
+}
+
+function checkNotAuthenticated(req, res, next) {
+if (authenticateUser) {
+ return next()
+}
+res.redirect('/login')
+}
+
 
 module.exports = router
