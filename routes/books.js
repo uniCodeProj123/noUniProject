@@ -167,14 +167,14 @@ function saveCover(book, coverEncoded) {
 }
 
 function checkAuthenticated(req, res, next) {
-if (!authenticateUser) {
+if (authenticateUser) {
  return next()
 }
 res.redirect('/login')
 }
 
 function checkNotAuthenticated(req, res, next) {
-if (authenticateUser) {
+if (!authenticateUser) {
  return next()
 }
 res.redirect('/login')

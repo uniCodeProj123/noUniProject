@@ -84,12 +84,14 @@ app.use('/', express.static(__dirname + '/public'));
             + '<p><input type="submit" value="Login"></p>'
             + '<p style="color: red;">' + req.flash('error') + '</p>'
             + '</form>'
-
+            + '<form action="/home" method="GET">'
+            + '<button class="btn btn-primary" type="submit">HOME</button>'
+            + '</form>'
         );
     });
 
     app.get('/logout', function(req, res) {
-      authenticateUser = true;
+      authenticateUser = false;
         req.logout();
         res.redirect('/');
     });
@@ -101,5 +103,9 @@ app.use('/', express.static(__dirname + '/public'));
             failureFlash: true
         })
     );
+
+    app.get('/home', function(req, res) {
+      res.redirect('/');
+    });
 
 app.listen(process.env.PORT || 3000)

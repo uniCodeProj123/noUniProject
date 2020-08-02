@@ -106,14 +106,14 @@ router.delete('/:id',checkAuthenticated, async (req, res) => {
 })
 
 function checkAuthenticated(req, res, next) {
-if (!authenticateUser) {
+if (authenticateUser) {
  return next()
 }
 res.redirect('/login')
 }
 
 function checkNotAuthenticated(req, res, next) {
-if (authenticateUser) {
+if (!authenticateUser) {
  return next()
 }
 res.redirect('/login')

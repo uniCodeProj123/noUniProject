@@ -8,14 +8,14 @@ var passport = require('passport'),
        };
 
 
-        global.authenticateUser = false;
+        global.authenticateUser = true;
 
    // Register a login strategy
    passport.use('login', new LocalStrategy(
        function(username, password, done) {
            // This should check again db
            if(username === user.username && password === user.password) {
-             authenticateUser = false;
+             authenticateUser = true;
 
                return done(null, user);
            }
