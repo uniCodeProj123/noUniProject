@@ -8,7 +8,7 @@ var passport = require('passport'),
        };
 
 
-        global.authenticateUser = true;
+        global.authenticateUser = false;
 
    // Register a login strategy
    passport.use('login', new LocalStrategy(

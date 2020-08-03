@@ -9,7 +9,7 @@ var passport = require('passport'),
            password: 'customerPassword'
        };
 
-        global.authenticateCustomer = true;
+        global.authenticateCustomer = false;
 
    // Register a login strategy
    passport.use('/customers/login', new LocalStrategy(
