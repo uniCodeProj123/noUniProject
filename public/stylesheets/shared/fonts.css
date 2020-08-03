@@ -5,7 +5,6 @@
 	font-weight: bold;
 	font-style: normal;
 }
-
 @font-face {
 	font-family: 'Gotham Rounded';
 	src: url('/fonts/GothamRounded-Medium.woff2') format('woff2'),
@@ -13,7 +12,6 @@
 	font-weight: 500;
 	font-style: normal;
 }
-
 @font-face {
 	font-family: 'Gotham Rounded';
 	src: url('/fonts/GothamRounded-Light.woff2') format('woff2'),
@@ -21,7 +19,6 @@
 	font-weight: 300;
 	font-style: normal;
 }
-
 @font-face {
 	font-family: 'Gotham Rounded Book';
 	src: url('/fonts/GothamRounded-Book.woff2') format('woff2'),

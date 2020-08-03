@@ -2,7 +2,8 @@
 
 var passport = require('passport'),
        LocalStrategy = require('passport-local').Strategy,
-       cUser = { // This a hard-coded user
+       cUser = {
+         // This a hard-coded user
            _id: 1,
            username: 'customerTest',
            email: 'testCustomer@bookstore.com',
@@ -14,7 +15,7 @@ var passport = require('passport'),
    // Register a login strategy
    passport.use('/customers/login', new LocalStrategy(
        function(username, password, done) {
-           // This should check again db
+         // checks against hardcoded user (replace with db data)
            if(username === cUser.username && password === cUser.password) {
              authenticateCustomer = true;
 
@@ -26,15 +27,14 @@ var passport = require('passport'),
        }
    ));
 
-   // Required for storing user info into session
+   // Used to store user info into session
    passport.serializeUser(function(cUser, done) {
      done(null, cUser._id);
    });
 
-   // Required for retrieving user from session
+   // Used to retrieve user from session
    passport.deserializeUser(function(id, done) {
-       // The user should be queried against db
-       // using the id
+     // here the user should be queried against db using the id
        done(null, cUser);
    });
 

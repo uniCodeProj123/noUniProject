@@ -5,21 +5,21 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  createdAt: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  pageCount: {
+    type: Number,
+    required: true
+  },
   description: {
     type: String
   },
   publishDate: {
     type: Date,
     required: true
-  },
-  pageCount: {
-    type: Number,
-    required: true
-  },
-  createdAt: {
-    type: Date,
-    required: true,
-    default: Date.now
   },
   coverImage: {
     type: Buffer,

@@ -29,12 +29,16 @@ app.use(methodOverride('_method'))
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
+
+
+// SETUP THE SERVER
+
+
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true,  useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))
-
 
 
 app.use('/', indexRouter)
@@ -63,7 +67,12 @@ app.use('/', express.static(__dirname + '/public'));
     app.use(customerAuth.session());
     app.use(flash());
 
-    // Set up routes
+
+
+    //ADMIN (hard coded) LOGIN LOGIC
+
+
+    // Set up admin login routes
     app.get('/', function(req, res) {
         if(req.user) {
             res.send(
@@ -111,10 +120,10 @@ app.use('/', express.static(__dirname + '/public'));
 
 
 
-//CUSTOMERS LOGIN LOGIC
+//CUSTOMERS (hard coded) LOGIN LOGIC
 
 
-    // Set up routes
+    // Set up customer login routes
     app.get('/', function(req, res) {
         if(req.cUser) {
             res.send(

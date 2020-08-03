@@ -19,8 +19,10 @@ function ready() {
   FilePond.setOptions({
     stylePanelAspectRatio: 150 / 100,
     imageResizeTargetWidth: 100,
-    acceptedFileTypes: ['image/jpeg'], // Only allow jpeg file type.
-    //allowMultiple: true, // allow allow Multiple file section
+    acceptedFileTypes: ['image/jpeg','image/png', 'image/jpg'],
+      // Only allow jpeg/png/jpg file types.
+    // allowMultiple: true,
+      // allow allow Multiple file section
     imageResizeTargetHeight: 150
   })
 
