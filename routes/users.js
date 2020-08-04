@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     // res.redirect(`authors/${newAuthor.id}`)
     res.redirect(`users`)
   } catch {
-    res.render('users/new', { user: user, errorMessage: 'Login error : please sign up' })
+    res.render('users/new', { user: user, errorMessage: 'Login error : please sign up properly (NOTE ~ password minimum length : 8)' })
   }
 })
 
